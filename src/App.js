@@ -1,12 +1,11 @@
 import React from 'react';
 import Panel from './Panel';
-import Clock from './Clock';
+import Clock from './Clock/Clock';
 //import Header from './Header';
 //import Content from './Content';
 //import Clock from './Clock';
 //import Footer from './Footer';
 import './index.css';
-import './clock.css';
 
 class App extends React.Component {
   
@@ -14,7 +13,7 @@ class App extends React.Component {
     return (
       <div className="notificationsFrame">
         <Panel />
-        <Clock />
+        <Clock format="h:m:s p" />
       </div>
     )
   }
