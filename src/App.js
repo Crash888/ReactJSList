@@ -33,7 +33,7 @@ class App extends React.Component {
     return (
       <div className="notificationsFrame">
         <div className="panel">
-          <Header title="Githib Activity" />
+          <Header title="Github Activity" />
           <Content
             onComponentRefresh={this.onComponentRefresh.bind(this)}
             requestRefresh={refreshing}

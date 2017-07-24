@@ -1,4 +1,5 @@
 import React from 'react';
+import SearchForm from './SearchForm';
 import './timeline.css';
 
 class Header extends React.Component {
@@ -15,6 +16,12 @@ class Header extends React.Component {
 		this.setState({
 			searchVisible: !this.state.searchVisible
 		})
+	}
+
+	handleSearch(val) {
+		//  Result when we receive search field data back from
+		//  the SearchForm
+		console.log("handleSearch: " + val)
 	}
 
 	render() {
@@ -37,10 +44,10 @@ class Header extends React.Component {
         		<span className="title">
 					{this.props.title}
 				</span>
-				<input
-					type="text"
-					className={searchInputClasses.join(' ')}
-					placeholder="Search ..." />
+				<SearchForm 
+					searchVisible={this.state.searchVisible}
+				 	onSubmit={this.handleSearch.bind(this)}
+				 />
 		    	
 		    	{/*  Onclick handler will toggle the searchVisible field */}
 		    	<div 

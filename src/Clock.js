@@ -17,13 +17,10 @@ class Clock extends React.Component {
 	}
 
 	setTimer() {
-		console.log('Setting the timer');
 		setTimeout(this.updateClock.bind(this), 1000);
 	}
 
 	updateClock() {
-		console.log('UpdateClock called');
-
 		const currentTime = new Date();
 
 		this.setState ({
