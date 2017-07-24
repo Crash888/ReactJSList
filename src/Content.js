@@ -4,21 +4,17 @@ import './timeline.css';
 import ActivityItem from './ActivityItem';
 import GithubActivityItem from './GithubActivityItem';
 
-const data = require('./data.json').slice(0, 4)
-
 class Content extends React.Component {
 	constructor(props) {
 		super(props);
-		console.log("In constructor" + data);
 
 		this.state = {
-			activities: []
+			loading: false,
+			activities: this.props.activities
 		}
 	}
 
-    
-
-	componentDidMount() {
+	componentWillMount() {
     	this.updateData();
   	}
 
@@ -29,17 +25,19 @@ class Content extends React.Component {
     	}
   	}
 
+
   	// Call out to github data and refresh directory
   	updateData() {
     	this.setState({
-      		loading: false,
-      		activities: data
-          	.sort(() => 0.5 - Math.random()).slice(0, 4)
-    	}, this.props.onComponentRefresh);
+    		loading: false,
+    		activities: this.state.activities
+    	}, this.props.onComponentRefresh)
   	}
 
 	render() {
-		const {activities} = this.state;
+		
+		const {activities, loading} = this.props;
+		
 		const listActivities = activities.map((activity) => 
 			<GithubActivityItem key={activity.timeStamp + activity.id} activity={activity} />
 		);
@@ -47,6 +45,8 @@ class Content extends React.Component {
 		return (
 			<div className="content">
 				<div className="line"></div>
+				{/* Show loading message if loading */}
+        		{loading && <div>Loading</div>}
 				{/*  Each Timeline Item */}
 				{listActivities}
 			</div>

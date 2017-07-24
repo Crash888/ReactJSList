@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import SearchForm from './SearchForm';
 import './timeline.css';
 
@@ -22,6 +23,11 @@ class Header extends React.Component {
 		//  Result when we receive search field data back from
 		//  the SearchForm
 		console.log("handleSearch: " + val)
+		this.props.onSearch(val);
+	}
+
+	submitForm(val) {
+		this.props.onSearch(val);
 	}
 
 	render() {
@@ -57,6 +63,10 @@ class Header extends React.Component {
     		</div>
 		)
 	}
+}
+
+Header.propTypes = {
+	onSearch: PropTypes.func
 }
 
 export default Header;

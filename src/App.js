@@ -1,63 +1,21 @@
-import React, { Component } from 'react';
-import Header from './Header';
-import Content from './Content';
+import React from 'react';
+import Panel from './Panel';
 import Clock from './Clock';
-import Footer from './Footer';
+//import Header from './Header';
+//import Content from './Content';
+//import Clock from './Clock';
+//import Footer from './Footer';
 import './index.css';
 import './clock.css';
 
-const data = require('./data.json');
-const fetchEvents = () => Promise.resolve(data)
-                      .then(json => json.slice(0, 4))
-
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {refreshing: false}
-  }
-
-  //  Method bound to the refresh button
-  refresh() {
-    this.setState({refreshing: true})
-  }
-
-  //  Claccback from the 'Content' component
-  onComponentRefresh() {
-    this.setState({refreshing: false});
-  }
-
+  
   render() {
-    const {refreshing} = this.state;
-
     return (
       <div className="notificationsFrame">
-        <div className="panel">
-          <Header title="Github Activity" />
-          <Content
-            onComponentRefresh={this.onComponentRefresh.bind(this)}
-            requestRefresh={refreshing}
-            fetchData={fetchEvents}
-          />
-          <Footer>
-            <button onClick={this.refresh.bind(this)}>
-              <i className="fa fa-refresh" />
-              Refresh
-            </button>
-          </Footer>
-        </div>
+        <Panel />
         <Clock />
       </div>
-        /*  
-        <div className="notificationsFrame">
-        <div className="panel">
-          <Header title="TimeLine" />
-          Passing in the activities
-          <Content activities={activities} />
-        </div>
-        <Clock />
-      </div> 
-      */
     )
   }
 }
