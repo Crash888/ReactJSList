@@ -1,7 +1,7 @@
 import React from 'react';
 import './timeline.css';
 
-import ActivityItem from './ActivityItem';
+//import ActivityItem from './ActivityItem';
 import GithubActivityItem from './GithubActivityItem';
 
 class Content extends React.Component {

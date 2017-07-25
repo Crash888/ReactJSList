@@ -19,6 +19,7 @@ class App extends React.Component {
   }
 }
 
+/*
 const activities = [
   {
     timeStamp: new Date().getTime(),
@@ -41,5 +42,6 @@ const activities = [
     comments: [{ from: 'Nate', text: 'I am so jealous' }]
   },
 ]
+*/
 
 export default App;

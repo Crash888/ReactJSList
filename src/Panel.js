@@ -5,11 +5,11 @@ import Content from './Content';
 import Footer from './Footer';
 
 const data = require('./data.json');
-const rootUrl = 'https://api.github.com';
-const endPoint = '/users/fullstackreact/events';
+//const rootUrl = 'https://api.github.com';
+//const endPoint = '/users/fullstackreact/events';
 
-const fetchEvents = () => Promise.resolve(data)
-                      .then(json => json.slice(0, 4))
+//const fetchEvents = () => Promise.resolve(data)
+//                     .then(json => json.slice(0, 4))
 
 class Panel extends React.Component {
   constructor(props) {
@@ -37,7 +37,6 @@ class Panel extends React.Component {
   }
 
   updateData() {
-  	
   	this.setState({
       	refreshing: false,
       	activities: data
@@ -64,7 +63,7 @@ class Panel extends React.Component {
   }
 
   updateFiltered(val) {
-	const {activities, searchFilter, filtered} = this.state;
+	const {activities, searchFilter} = this.state;
 
   	if (searchFilter === '') {
   		this.setState({
@@ -79,7 +78,7 @@ class Panel extends React.Component {
   }
 
   render() {
-    const {refreshing, activities, filtered} = this.state;
+    const {refreshing, filtered} = this.state;
 
     return (
         <div className="panel">
